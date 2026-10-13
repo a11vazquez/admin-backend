@@ -7,7 +7,9 @@ import cors from "cors";
 import session from "express-session";
 import expressEjsLayouts from "express-ejs-layouts";
 import morgan from "morgan";
-import { productRoutes } from "./src/api/routes/index.js";
+import { productRoutes, viewsRoutes } from "./src/api/routes/index.js";
+import { _dirname, join } from "./src/api/utils/index.js";
+
 
 
 /*============================== */
@@ -28,7 +30,8 @@ const SESSION_KEY = environments.session_key;
 ======================*/
 
 app.set("view engine", "ejs");
-// app.set("view", join(__dirname, "src/views"));
+app.set("views", join(_dirname, "src/views") );
+
 
 //activa el sistema de layout
 app.use(expressEjsLayouts);
@@ -43,6 +46,7 @@ app.set("layout", "layout/main"); //sirve un layout predeterminado a cada vista
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended:  true}));
+app.use(express.static(join(_dirname, "src/public")));
 // app.use(express.static(join(__dirname, "src/public")));
 app.use(session({
     secret: SESSION_KEY,
@@ -57,6 +61,8 @@ app.use(morgan("dev"));
 ========================*/
 
 app.use("/api/products", productRoutes);
+
+app.use("/", viewsRoutes);
 
 /* ========================== */
 
