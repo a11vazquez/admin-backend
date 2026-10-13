@@ -31,6 +31,7 @@ const deleteProduct = async (id) =>{
 
 export default {
     selectAllProducts,
+    selectProductWhereId,
     insertProduct,
     updateProduct,
     deleteProduct
