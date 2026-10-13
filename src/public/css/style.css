@@ -1,0 +1,335 @@
+:root{
+    /*BACKGROUND COLORS*/
+    --color-header-bg: #020041;
+    --color-btn-bg: #0186e1;
+
+    /*FONTS*/
+    --font-title: "Caacupe One", sans-serif;
+    --font-card-product: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+
+    /*BOX-SHADOW*/
+    --box-shadow-card: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    --box-shadow-category-card: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.192);
+    border: solid 3px red;
+    gap: 0.5rem;
+}
+
+/*===============
+    HEADER
+================*/
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    color: white;
+    background-color: var(--color-header-bg);
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+header p{ /*TEXTO LOGO*/
+    font-family: "Caacupe One";
+    font-weight: 500;
+    font-size: clamp(3rem, 5vw, 5rem);;
+    padding: 0.5rem;
+    text-shadow: 0 11px 56px #5a7deb; /*sombreado, 11 abajo, 11 derecha, 47 de blur*/
+    align-self: flex-start;
+}
+nav{
+    display: flex;
+}
+#logout input{
+        padding: 0.3rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+/*Div contenedor del nav y, carrito icono*/
+/* .nav{ 
+    display: flex;
+    align-items: end;
+    gap: 2.3rem;
+}
+nav{
+    font-size: 1.9rem;
+    text-align: center;
+} */
+ul{
+    display: flex;
+    list-style: none;
+}
+
+header li{
+   border-right: solid 1px gray;
+}
+
+header a{ 
+    color: white;
+    text-decoration: none;
+    margin: 1.4rem;
+}
+
+header li a{
+    position: relative;
+}
+
+header li a::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: rgb(255, 255, 255);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 0.3s ease;
+}
+
+header li a:hover::before{
+    transform: scalex(1);
+}
+
+
+
+/*Menu hamburguesa*/
+.ham-btn, .ham-close{
+    visibility: hidden;
+}
+
+
+img{
+    width: 100%;
+    object-fit: contain;
+}
+
+.card-product img{
+    width: 100%;
+    
+    margin: auto;
+    object-fit: contain;
+}
+
+
+
+.card-product{
+     display: flex;
+     flex-direction: column;
+    font-size: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+    max-width: 335px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    background-color: white;
+    padding: 1rem;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.hero{
+    background-image: url(/img/17450.webp);
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.hero button{
+    max-width: fit-content;
+    border-radius: 0.5rem;
+    background-color: #3c71e2;
+    border: none;
+    color: white;
+}
+
+.product-info{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+background-color: rgba(0, 0, 0, 0.192);
+
+
+margin: 0;
+}
+
+.product-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.product-actions{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+}
+button{
+    padding: 0.5rem;
+    margin: 0;
+}
+
+
+
+/*====================
+    DELETE SECTION
+=======================*/
+
+ul{
+  list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.ul-product{
+    background-color: rgba(128, 128, 128, 0.281);
+    padding: 0;
+}
+
+.li-product{
+    margin: 0;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 1rem;
+    font-weight: 500;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.li-product img{
+    width: 100px;
+  
+}
+
+.btn-eliminar{
+    padding: 0.5rem 1.4rem; 
+}
+
+
+.error-message{
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+    font-weight: bold;
+    padding: 0.9rem;
+    border-radius: 0.3rem;
+    
+}
+
+.error-message{
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+@media (max-width: 658px) {
+
+    /*=====================
+    HEADER AND HAMBURGUER MENU
+    ======================*/
+
+    /*navbar y, carrito*/
+    /* .header-info {
+      
+        flex-direction: row-reverse;
+        gap: 0.5rem;
+        align-items: flex-start;
+        padding-right: 0.3rem;
+    }
+
+    .cart-icon{
+        margin: 0;
+    } */
+
+    .ham-btn, .ham-close {
+        visibility: visible;
+        font-size: 3rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+   
+
+    #navbar{
+    
+       background-color: var(--color-header-bg);
+        z-index: 10;
+
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 1rem;
+        position: fixed;
+
+       top: 0;
+       right: 0;
+       bottom: 0;
+
+       padding: 1rem;
+       
+       transform: translateX(100%);
+    }
+    
+    #navbar.animate{
+    transition:
+        transform 0.47s ease,
+        opacity 0.29s ease,
+        visibility 0.20s ease;
+    }
+    #navbar.nav-visible {
+        transform: translateX(0);
+        visibility: visible;
+        opacity: 1;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+   }
+    nav ul{
+        flex-direction: column;
+        align-items: end;
+    }
+    .border-line{
+        border-right: none;
+    }
+    nav li{
+        font-size: 1.9rem;
+        border: none;
+    }
+
+/*CARD PRODUCT*/
+
+.card-btn{
+    padding: 1rem 1rem;
+}
+    
+}
+
