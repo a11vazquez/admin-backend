@@ -18,7 +18,7 @@ const insertProduct = async (name, image, price, category) =>{
 };
 
 const updateProduct = async (name, image, price, category, id) =>{
-    const sql = "DELETE FROM products WHERE id = ?";
+     const sql = "UPDATE products set name = ?, img = ?, price = ?, category = ? WHERE id = ?";
     const [rows] = await connection.query(sql,[name, image, price, category, id]);
     return rows.affectedRows || null;
 };

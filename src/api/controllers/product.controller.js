@@ -24,7 +24,7 @@ export const getProductById = async (req, res) => {
         product ? res.status(200).json({
             product: product,
         }) : res.status(404).json({
-            message: "NOT FOUND, No se encontro el producto con el ID buscada"
+            message: "ERROR! NOT FOUND"
         });
 
     } catch (error) {
@@ -65,7 +65,7 @@ export const deleteProductById = async (req, res) => {
                 result,
                 message: `PRODUCTO CON ID : ${id} ELIMINADO CON EXITO`
             }) : res.status(404).json({
-                message: "ERROR!, No se encontro ningun producto con el ID buscado"
+                message: "ERROR! NOT FOUND"
             });
 
     } catch (error) {
@@ -79,12 +79,12 @@ export const deleteProductById = async (req, res) => {
 export const modifyProduct = async (req, res) =>{
     try {
         const {id, name, image, price, category} = req.body;
-        const result = await productModels.modifyProduct(name, image, price, category, id);
+        const result = await productModels.updateProduct(name, image, price, category, id);
         
         result ? res.status(200).json({
                 message: "Producto actualizado correctamente"
             }) : res.status(404).json({
-                    message: "ERROR!, No se encontro ningun producto con ID buscado"
+                    message: "ERROR! NOT FOUND"
             });
     } catch (error) {
          console.error(error);

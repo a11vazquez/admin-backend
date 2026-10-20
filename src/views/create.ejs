@@ -1,0 +1,50 @@
+
+<section class="create-container">
+    <div class="createProduct">
+                <h1>Crear Producto</h1>
+                <form id="altaProducts-container" class="classic-form">
+                    <input type="hidden" name="id" class="input" value="${p.id}">
+                    <label for="nameProd">Name</label>
+                    <input type="text" name="name" id="nameProd" class="input" required>
+    
+                    <label for="imageProd">Image</label>
+                    <input type="text" name="image" id="imageProd" class="input" required>
+    
+                    <label for="priceProd">Price</label>
+                    <input type="number" name="price" id="priceProd" class="input" required>
+    
+                    <label for="imageProd">Categoria :</label>
+                    <select name="category" id="categoryProd">
+                        <option value="auriculares">Auriculares</option>
+                        <option value="iphod's">Iphod</option>
+                    </select>
+    
+                    <input type="submit" class="input-btn" value="Crear Producto">
+                </form>
+            </div>
+
+            
+            <div class="createUser">
+                <h1>Crear Usuario</h1>
+                <form autocomplete="off"  id="altaUser-form" class="classic-form">
+    
+                    <label for="nameUser">Name</label>
+                    <input type="text" name="name" id="nameUser" class="input" required>
+    
+                    <label for="emailUser">Email</label>
+                    <input type="email" name="email" id="emailUser" class="input" required>
+    
+                    <label for="passwordUser">Password</label>
+                    <input type="password" name="password" id="passwordUser" class="input" required>
+                        <span class="create-text"></span>
+                    <input type="submit" class="input-btn" value="Crear Usuario">
+                </form>
+            </div>
+        </section>
+         <!-- <ul class="ul-product hidden">
+        </ul> -->
+        <ion-icon class="btn-container-close hidden" id="btn-ul-close" name="close-outline"></ion-icon>
+        <section id="container" class="container"> 
+
+         </section>
+        <script src="/js/create.js"></script>

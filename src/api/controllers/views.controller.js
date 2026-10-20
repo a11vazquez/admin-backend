@@ -5,7 +5,7 @@ export const viewProducts = async (req, res) =>{
         const [rows] = await productModels.selectAllProducts();
         res.render("index",{
             title: "Panel",
-            about: "Lista De Productos",
+            about: "Listado De Productos",
             products: rows
         });
     } catch (error) {

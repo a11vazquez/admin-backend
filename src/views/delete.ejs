@@ -1,0 +1,24 @@
+<h1>
+    <%= title %>
+</h1>
+<form id="searchForm">
+    <label for="searchProd">Id Product :</label>
+    <input type="number" name="id" id="searchProd" required value="<%= product ? product.id : '' %>">
+    <button type="sumbit" class="input-btn">buscar</button>
+</form>
+<section class="container">
+<% if (product) { %>
+        <ul class="ul-product">
+                <li class="li-product">
+                    <img src="<%= product.img %>" alt="Imagen del producto">
+                    <p>Id: <%= product.id %> | <%= product.name %> | Category: <%= product.category %> | Price: <strong>$<%= product.price %></strong> </p>
+                    </li>
+                    <li>
+                        <button class="card-btn btn-delete" data-id="<%= product.id %>" data-btn-delete>Eliminar Producto</button>
+                    </li>
+            </ul>
+            ;
+<% }  %>
+</section>
+
+<script type="module" src="/js/delete.js"></script>

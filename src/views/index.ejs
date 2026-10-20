@@ -8,16 +8,22 @@
             </div>
             <a href="#container"><button>View Products</button></a>
         </section>
-        <h1><%= about %></h1>
+        <h1 class="title"><%= about %></h1>
         <section id="container" class="container">
             <% products.forEach( p => { %> 
          <div class="card-product">
             <img src="<%= p.img %>" alt="<%= p.name %>"> 
-                    <h3> <%= p.name %></h3> 
-                    <p><%= p.category %></p>
-                    <p><%= p.price%></p>
-                    <button class="card-btn">Add To Cart</button>
+            <p>ID : <%= p.id%></p>
+                    <h3><%= p.name %></h3> 
+                    <p>Category: <%= p.category %></p>
+                    <p>Price: $ <%= p.price%></p>
+                    <div class="card-buttons">
+                        <button class="card-btn btn-modify" data-id="<%= p.id %>" data-btn-modify>Modificar</button>
+                        <button class="card-btn btn-delete" data-id="<%= p.id %>" data-btn-delete>Eliminar</button>
+                    </div>
                 </div>
             <%})%>
 
         </section>
+
+        <script src="/js/index.js"></script>
