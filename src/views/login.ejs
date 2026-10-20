@@ -1,0 +1,18 @@
+<h1 class="title">
+    <%= title %>
+</h1>
+<form action="/login" method="post" autocomplete="off" id="login-form" class="classic-form">
+    <label for="nameUser">Name</label>
+    <input type="text" name="name" id="nameUser" class="input" required>
+
+    <label for="emailUser">Email</label>
+    <input type="email" name="email" id="emailUser"  class="input" required>
+
+    <label for="passwordUser">Password</label>
+    <input type="password" name="password" id="passwordUser" class="input" required>
+    <% if (typeof error !=="undefined" ) { %>
+        <p class="error-message">  <%= error %> </p>
+    <% } %>
+            <input type="submit" class="input-btn" value="Login">
+            <input type="button" class="input-btn" value="Acceso Rapido">
+</form>
