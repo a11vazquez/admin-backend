@@ -92,16 +92,6 @@ nav {
     font-weight: bold;
 }
 
-/*Div contenedor del nav y, carrito icono*/
-/* .nav{ 
-    display: flex;
-    align-items: end;
-    gap: 2.3rem;
-}
-nav{
-    font-size: 1.9rem;
-    text-align: center;
-} */
 ul {
     display: flex;
     list-style: none;
@@ -207,16 +197,53 @@ header li a:hover::before {
     align-items: center;
     text-align: center;
     color: white;
+     position: relative;
 }
 
+.hero::before {
+    content: "";
+    position: absolute; 
+    inset: 0; /* ocupar todo el contenido del ancestro realtive*/
+    background-color: rgba(0, 0, 0, 0.14); /*opacity*/
+}
+
+.hero-content {
+    z-index: 1; /* se posicione por arriba de la opacity del overlay ::before*/
+    max-width: 74rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.9rem;
+
+    padding: 1rem;
+    font-family: sans-serif;
+    text-align: center;
+    color: white;
+    text-shadow: 11px 11px 56px #5a7deb; /*sombreado, 11 abajo, 11 derecha, 47 de blur*/
+}
+.hero-content h1 {
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-family: var(--font-title);
+}
+
+.hero-content p {
+    font-size: clamp(1.5rem, 2vw, 2.8rem);
+}
+
+.hero-content h2{
+     font-size: clamp(1.8rem, 3.5vw, 3rem);
+}
 .hero button {
+    font-size: clamp(1rem, 1.4rem, 1.9rem);
     max-width: fit-content;
     border-radius: 0.5rem;
     background-color: #3c71e2;
     border: none;
     padding: 1.4rem;
     color: white;
-}
+    cursor: pointer;
+} 
 
 .product-info {
     display: flex;
@@ -325,12 +352,15 @@ ul {
 }
 
 .create-text{
-       margin: 1rem 0;
+    margin: 1rem 0;
     font-size: 1.8rem;
     color: rgb(45 151 10);
     font-weight: bold;
 }
 
+ion-icon{
+    cursor: pointer;
+}
 @media (max-width: 500px) {
     .create-container {
         flex-direction: column;

@@ -11,15 +11,21 @@ const selectProductWhereId = async (id) =>{
     return rows[0] || null;
 };
 
-const insertProduct = async (name, image, price, category) =>{
-    const query = "INSERT INTO products (name, img, price, category) VALUES (?, ?, ?, ?)";
-    const [rows] = await connection.query(query, [name, image, price, category]);
+const selectProductWhereNameAndCategory = async (name, category) =>{
+    const sql = "SELECT * FROM products WHERE name = ? AND category = ?";
+    const [rows] = await connection.query(sql,[name, category]);
+    return rows[0] || null;
+};
+
+const insertProduct = async (name, image, price, stock, category) =>{
+    const query = "INSERT INTO products (name, img, price, stock, category) VALUES (?, ?, ?, ?, ?)";
+    const [rows] = await connection.query(query, [name, image, price, stock, category]);
     return rows.insertId || null;
 };
 
-const updateProduct = async (name, image, price, category, id) =>{
-     const sql = "UPDATE products set name = ?, img = ?, price = ?, category = ? WHERE id = ?";
-    const [rows] = await connection.query(sql,[name, image, price, category, id]);
+const updateProduct = async (name, image, price, stock,  category, id) =>{
+     const sql = "UPDATE products set name = ?, img = ?, price = ?, stock = ?, category = ? WHERE id = ?";
+    const [rows] = await connection.query(sql,[name, image, price, stock, category, id]);
     return rows.affectedRows || null;
 };
 
@@ -32,6 +38,7 @@ const deleteProduct = async (id) =>{
 export default {
     selectAllProducts,
     selectProductWhereId,
+    selectProductWhereNameAndCategory,
     insertProduct,
     updateProduct,
     deleteProduct

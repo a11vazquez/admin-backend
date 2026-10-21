@@ -79,7 +79,7 @@ function printProduct(p) {
             <ul class="ul-product">
                 <li class="li-product">
                     <img src="${p.img}" alt="Imagen del producto">
-                    <p>Id: ${p.id} | Name: ${p.name} | Category: ${p.category} | Price: <strong>$${p.price}</strong> </p>
+                    <p>Id: ${p.id} | Name: ${p.name} | Category: ${p.category} | Price: <strong>$${p.price}</strong> | Stock : ${p.stock} </p>
                     </li>
                     <li>
                         <button class="input-btn" data-id="${p.id}" data-btn-modify>Modificar Producto</button>
@@ -103,6 +103,9 @@ async function crearFormulario(p) {
 
                 <label for="priceProd">Price</label>
                 <input type="number" name="price" id="priceProd" class="input" value="${p.price}" required>
+                
+                <label for="stockProd">Stock</label>
+                <input type="number" name="stock" id="stockProd" class="input" value="${p.stock}" required>
 
                 <label for="imageProd">Select Category :</label>
                 <select name="category" id="categoryProd">

@@ -6,10 +6,16 @@ export const insertUser = async (req, res) =>{
         const {name, email, password} = req.body;
         if(!name || !email || !password){
             return  res.status(400).json({
-                message: "Datos incompletos, NOT FOUND",
+                message: "Datos incompletos, NOT FOUND"
             });
         }
 
+        const user = await userModels.findUserByEmail(email);
+        if(user){
+             return  res.status(409).json({
+                message: "Email ya registrado en otro usuario"
+            });
+        }
         const hashedPassword = await hashPassword(password);
 
         const [rows] = await userModels.insertUser(name, email, hashedPassword);
@@ -19,7 +25,7 @@ export const insertUser = async (req, res) =>{
                 userID: rows.insertId
             })
         }else{
-            res.status(404).json({
+            res.status(400).json({
                 message: "ERROR AL CREAR USUARIO"
             });
         }

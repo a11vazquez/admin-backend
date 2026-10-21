@@ -8,7 +8,8 @@ const insertUser =  (name, email, password) =>{
 
 const findUserByEmail =  async (email) =>{
     const sql = "SELECT * FROM users WHERE email = ?";
-    return  await connection.query(sql,[email]);
+    const [rows] = await connection.query(sql,[email]);
+    return rows || null;
 }
 export default  {
     insertUser,

@@ -6,15 +6,13 @@ let altaProducts_container = document.getElementById("altaProducts-container");
 // const ul = document.querySelector(".ul-product");
 const container = document.querySelector(".container");
 const btn_container_close = document.querySelector(".btn-container-close");
+const textAlert = document.getElementById("textAlert");
 
 altaProducts_container.addEventListener("submit", async (event) => {
     event.preventDefault(); //prevenimos el envio de datos por defecto del FORM
 
-    //convertir los clave-valor del formData en objeto.
-    let producto = Object.fromEntries(new FormData(event.target));
-    //console.log(`Product ${JSON.stringify(producto)}`);
-    console.log(producto)
-    //let producto = Object.fromEntries(formData);
+    const product = Object.fromEntries(new FormData(event.target));
+    console.log("Form Product : ", product)
 
     try {
         let response = await fetch(`${apiUrl}api/products`, {
@@ -22,23 +20,27 @@ altaProducts_container.addEventListener("submit", async (event) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify(producto) //parsea el objeto js a json para enviarlo por http
+            body: JSON.stringify(product) //parsea el objeto js a json para enviarlo por http
         });
 
         const result = await response.json();
+        console.log("RESPONSE : ", response);
+        console.log("RESULT RESPONSE PARSE JSON OBJ JS : ", result);
         if (response.ok) {
-            console.log(response);
-            producto.id = result.idProduct;
-            printProduct(producto);
-            btn_container_close.classList.remove("hidden");
+            product.id = result.idProduct;
+            printProduct(product);
             container.classList.remove("hidden");
+            btn_container_close.classList.remove("hidden");
+            if(textAlert.textContent.length){
+                textAlert.textContent = "";
+                textAlert.classList.remove("error-message");
+            } 
             console.log(`${result.message} - Id Product : ${result.idProduct}`);
         } else {
-           container.innerHTML =
-                `<div class="error-message">
-                    <p>ERROR! ${response.message}</p>
-                </div>`
-            //throw new Error("Erorr al insertar, no se a creado el producto");
+            console.log("RESULT MESSAGE : ", result.message);
+            textAlert.classList.add("error-message");
+            textAlert.textContent = `${result.message}`
+            throw new Error("Erorr al insertar, no se a creado el producto");
         }
 
     } catch (err) {
@@ -76,7 +78,7 @@ altaUseForm.addEventListener("submit", async event => {
             text.textContent = `Usuario Creado Con Exito`
             console.log(`${result.message} - Id usuario: ${result.userID}`);
         } else {
-            text.textContent = `Error al crear Usuario`
+            text.textContent = `${result.message}`
             text.classList.remove("create-text")
             text.classList.add("error-message")
             throw new Error(result.message || "Error al crear usuario");
@@ -111,9 +113,19 @@ container.addEventListener("click", (e) =>{
     }
 });
 btn_container_close.addEventListener("click", () =>{
-    container.classList.add("hidden");
-    btn_container_close.classList.add("hidden");
+    addOrRemoveHiddenClass();
 });
 
 
+function addOrRemoveHiddenClass(){
+    if(container.classList.contains("hidden"))
+        container.classList.remove("hidden");
+    else
+        container.classList.add("hidden");
 
+    if(btn_container_close.classList.contains("hidden"))
+        btn_container_close.classList.remove("hidden");
+    else
+        btn_container_close.classList.add("hidden");
+
+}
