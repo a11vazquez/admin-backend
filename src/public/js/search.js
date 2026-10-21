@@ -5,8 +5,8 @@ import { apiUrl } from "./helper.js";
 const container = document.querySelector(".container");
 const form = document.getElementById("searchForm");
 
-const btnDelete = document.querySelector(".btn-delete");
-const btnModify = document.querySelector(".btn-modify");
+// const btnDelete = document.querySelector(".btn-delete");
+// const btnModify = document.querySelector(".btn-modify");
 
 form.addEventListener("submit", async (e) => {
     e.preventDefault(); // prevenir el envio por default
@@ -18,6 +18,7 @@ form.addEventListener("submit", async (e) => {
     try {
 
         let res = await fetch(`${apiUrl}api/products/${id}`);
+        console.log("FETCH SEARCH");
         let data = await res.json();
         let product = data.product;
         if (res.ok) {

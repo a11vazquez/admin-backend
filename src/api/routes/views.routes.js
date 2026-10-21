@@ -38,7 +38,7 @@ router.get("/modify/:id" , async (req, res) =>{
         }
 });
 
-router.get("/delete" , sessionValidate, async (req, res) =>{
+router.get("/delete" , async (req, res) =>{
         res.render("delete", {
                 title: "Eliminar Producto",
                 product: null
@@ -127,6 +127,20 @@ router.post("/login", async (req,res) => {
                         error: "error interno en el servidor LOGIN"
                 });
         }
+});
+
+
+router.post("/logout", (req,res) =>{
+        req.session.destroy((err) =>{
+                if(err){
+                        console.log("Error al destruir la session : ", err);
+                        return res.status(500).json({
+                                error: "Error al cerrar la session"
+                        });
+                }
+        });
+
+        res.redirect("/login");
 });
 
 export default router;
