@@ -28,7 +28,7 @@ const searchForm = initSearchForm({
 async function deleteProduct(id) {
     console.log("ID PRODUCTO ELIMINADO : ", id);
     try {
-        const res = await fetch(`${apiUrl}${id}`, {
+        const res = await fetch(`${apiUrl}api/products/${id}`, {
             method: "DELETE"
         });
 

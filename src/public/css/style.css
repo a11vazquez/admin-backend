@@ -325,9 +325,9 @@ ul {
 }
 
 .create-text{
-    margin: 1rem 0;
-    font-size: 1.4rem;
-    color: rgba(128, 128, 128, 0.438);
+       margin: 1rem 0;
+    font-size: 1.8rem;
+    color: rgb(45 151 10);
     font-weight: bold;
 }
 
@@ -693,3 +693,4 @@ ul {
     flex-direction: column;
     align-items: center;
 }
+

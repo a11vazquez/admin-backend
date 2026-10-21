@@ -58,7 +58,7 @@ router.get("/delete/:id" , sessionValidate, async (req, res) =>{
 /*===============
       LOGIN
 ================*/
-router.get("/login", sessionValidate, async(req, res) =>{
+router.get("/login",  async(req, res) =>{
         res.render("login",{
                 title: "Login Panel",
                 layout: "layout/auth"

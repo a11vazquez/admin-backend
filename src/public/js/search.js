@@ -1,6 +1,6 @@
    /*Obtener productos desde el FRONT lado del cliente */
            // import API_URL from "./src/api/config/api.js"
-    const url = 'http://localhost:3000'
+    import { apiUrl } from "./helper.js";
 
    const container = document.querySelector(".container");
    const form = document.getElementById("searchForm");
@@ -17,7 +17,7 @@
     
              try {
             
-                 let res = await fetch(`http://localhost:3000/api/products/${id}`);
+                 let res = await fetch(`${apiUrl}api/products/${id}`);
                  let data = await res.json();
                  let product = data.product;
                 if(res.ok){ 
@@ -113,13 +113,4 @@
         }
 
     });
-        // function init(){
-        //     obtenerProductos();
-        // }
-// init();
-
-            // const btnBuy = card.querySelector(".card-btn");
-            // btnBuy.addEventListener("click", (e) =>{
-            //     e.preventDefault();
-            // });
 

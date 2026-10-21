@@ -46,7 +46,7 @@ async function actualizarProducto(event) {
 
     console.log("Form datos put method");
     try {
-        const res = await fetch(`${apiUrl}`, {
+        const res = await fetch(`${apiUrl}api/products`, {
             method: "PUT",
             headers: {
                 "content-type": "application/json"

@@ -1,6 +1,6 @@
 
 
-export const apiUrl = 'http://localhost:3000/api/products/'
+export const apiUrl = 'http://localhost:3000/'
 
 function printHtmlMessage(container, message, color) {
     console.log(message);
@@ -60,7 +60,7 @@ export function initSearchForm({onSucces, container}){
 
 export async function searchProductBDD(id) {
     console.log("ID SEARCHPRODUCTBDD : ", id);
-    const res = await fetch(`${apiUrl}${id}`);
+    const res = await fetch(`${apiUrl}api/products/${id}`);
     console.log("RESPONSE : ", res);
     const data = await res.json();
 

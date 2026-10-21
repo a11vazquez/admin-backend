@@ -17,7 +17,7 @@ altaProducts_container.addEventListener("submit", async (event) => {
     //let producto = Object.fromEntries(formData);
 
     try {
-        let response = await fetch(`${url_api}/api/products`, {
+        let response = await fetch(`${apiUrl}api/products`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -60,7 +60,7 @@ altaUseForm.addEventListener("submit", async event => {
     let formData = Object.fromEntries(new FormData(event.target));
     console.log("datos form : ", formData);
     try {
-        const response = await fetch(`${apiUrl}api/user`, {
+        const response = await fetch(`${apiUrl}api/users`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -77,6 +77,8 @@ altaUseForm.addEventListener("submit", async event => {
             console.log(`${result.message} - Id usuario: ${result.userID}`);
         } else {
             text.textContent = `Error al crear Usuario`
+            text.classList.remove("create-text")
+            text.classList.add("error-message")
             throw new Error(result.message || "Error al crear usuario");
         }
 
@@ -108,7 +110,7 @@ container.addEventListener("click", (e) =>{
         }
     }
 });
-btn_container_close.addEventListener("click", e =>{
+btn_container_close.addEventListener("click", () =>{
     container.classList.add("hidden");
     btn_container_close.classList.add("hidden");
 });
