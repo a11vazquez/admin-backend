@@ -7,7 +7,7 @@ import cors from "cors";
 import session from "express-session";
 import expressEjsLayouts from "express-ejs-layouts";
 import morgan from "morgan";
-import { productRoutes, viewsRoutes } from "./src/api/routes/index.js";
+import { productRoutes, userRoutes, viewsRoutes } from "./src/api/routes/index.js";
 import { _dirname, join } from "./src/api/utils/index.js";
 
 
@@ -64,6 +64,7 @@ app.use("/api/products", productRoutes);
 
 app.use("/", viewsRoutes);
 
+app.use("/api/users", userRoutes);
 /* ========================== */
 
 
