@@ -132,6 +132,9 @@ header li a:hover::before {
     transform: scalex(1);
 }
 
+.logout-input{
+    cursor: pointer;
+}
 
 
 /*Menu hamburguesa*/
@@ -150,11 +153,6 @@ header li a:hover::before {
     object-fit: contain;
 } */
 
-.card-product img {
-    width: 235px;
-    margin: auto;
-    object-fit: contain;
-}
 
 
 
@@ -163,7 +161,7 @@ header li a:hover::before {
     flex-direction: column;
     font-size: 1.9rem;
     margin: 1rem 0;
-    max-width: 335px;
+  width: 245px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     background-color: white;
     padding: 1rem;
@@ -724,3 +722,167 @@ ion-icon{
     align-items: center;
 }
 
+
+
+
+
+/* ================
+    ORDER BY SECTION
+===================*/
+
+.container-orderBy{
+    width: 92%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-top: 1rem;
+     box-shadow: var(--box-shadow-card);
+    background-color: rgba(73, 70, 70, 0.075);
+    font-size: 1rem;
+    font-weight: bold;
+}
+.container-orderBy_btns{
+    display: flex;
+    justify-content: space-evenly;
+      flex-wrap: wrap;
+      gap: 1rem;
+    padding: 1rem;
+}
+
+.order-btn{
+    padding: 0.3rem 1.4rem;
+    font-weight: bold;
+    color: rgb(252, 249, 249);
+    background-color: rgb(8, 196, 8);
+    border: none;
+    border-radius: 0.3rem;
+}
+
+button{
+      cursor: pointer;
+}
+
+/*===============
+INPUT SEARCH PRODUCT
+==============*/
+
+.section-search-product{
+    display: flex;
+    gap: 1.4rem;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    font-size: clamp(1.4rem, 1.6rem, 1.9rem);
+    font-weight: 500;
+    font-family: var(--font-title);
+}
+.input-search-product{
+    padding: 0.5rem 1.5rem;
+    border-radius: 1.5rem;
+    width: clamp(14rem, 22rem, 26rem);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: none; 
+    outline: none; /*elimina borde interno al hacer foco*/
+    transition: 0.3s;
+}
+
+
+
+
+/*===========================
+FILTER PRODUCTS CATEGORIES
+============================*/
+
+/*section contenedora*/
+.category-products {
+    margin-top: 1.4rem;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.9rem;
+    font-family: monospace;
+    box-shadow: var(--box-shadow-category-card);
+    border-radius: 0.3rem;
+}
+
+.category-products h3{
+    font-size:  clamp(1.4rem, 8vw, 3rem);;
+}
+
+/*section buttons*/
+.filter-category-products{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    gap: 1.4rem;
+    width: 92%;
+   
+}
+
+
+.filter-category-products img{
+    width: 150px;
+    object-fit: contain;
+}
+
+/*button card category*/
+.category-products_card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.4rem;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    border-radius: 1rem;
+    
+    cursor: pointer;
+    border: none;
+    
+    background-color: transparent;
+}
+
+.category-products_card a{
+    font-size: clamp(1rem, 1.7rem, 2.1rem);
+    /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+.category-products  button{
+    background-color: transparent;
+    border: none;
+    color: transparent;
+   
+}
+
+.category-products_card a:hover{
+    text-decoration: underline;
+}
+
+.underline a{
+    text-decoration: underline !important;
+}
+
+.card-product img{
+    width: 92%;
+    height: 92%;
+    border-radius: 10%;
+}
+.card-product_img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.underline a{
+    text-decoration: underline !important;
+}

@@ -8,10 +8,61 @@
             </div>
         </section>
         <h1 class="title"><%= about %></h1>
+       
+              <section class="category-products">
+            <h3>Elige Tu Categoria</h3>
+            <article class="filter-category-products">
+                <button type="button" class="category-products_card" data-category="airpods">
+                    <img src="img/card-airpods.png" alt="">
+                    <a href="#container">AirPods</a>
+                </button>
+
+                <button type="button" class="category-products_card" data-category="iphone">
+                    <img src="img/card-iphone.png" alt="">
+                    <a href="#container">Iphone</a>
+                </button>
+                <button type="button" class="category-products_card" data-category="ipad">
+                    <img src="img/card-ipad.png" alt="">
+                    <a href="#container">Ipad</a>
+                </button>
+
+                <button type="button" class="category-products_card" data-category="mac">
+                    <img src="img/card-mac.png" alt="">
+                    <a href="#container">Mac</a>
+                </button>
+
+                <button  type="button" class="category-products_card" data-category="all">
+                    <img src="img/card-all.png" alt="">
+                   <a href="#container">Todos</a>
+                </button>
+
+            </article>
+            
+        </section>
+        <div class="container-orderBy">
+            <div class="container-orderBy_btns">
+                <button class="order-btn" id="sort-price-btn">Precio Mayor</button>
+                <button class="order-btn" id="sort-price-lower-btn">Precio Menor</button>
+                <button class="order-btn" id="sort-normal-btn">Normal</button>
+            </div>
+            
+            <div class="section-search-product">
+                <p>Buscar Producto :</p>
+                <input 
+                type="text" 
+                id="filter-input"
+                class="input-search-product" 
+                placeholder="Escriba Aqui..">
+                
+            </div>
+            
+        </div>
         <section id="container" class="container">
-            <% products.forEach( p => { %> 
+        <% products.forEach( p => { %> 
          <div class="card-product">
-            <img src="<%= p.img %>" alt="<%= p.name %>"> 
+            <div class="card-product_img">
+                <img src="<%= p.img %>" alt="<%= p.name %>"> 
+            </div>
             <p>ID : <%= p.id%></p>
                     <h3><%= p.name %></h3> 
                     <p>Category: <%= p.category %></p>
@@ -25,5 +76,7 @@
             <%})%>
 
         </section>
-
-        <script src="/js/index.js"></script>
+    <script id="products-data" type="application/json">
+        <%- JSON.stringify(products).replace(/</g, '\\u003c') %>
+    </script>
+        <script src="/js/index.js" ></script>
