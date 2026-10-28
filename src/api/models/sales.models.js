@@ -1,10 +1,16 @@
-import connection from "../database/db.js";
+import pool from "../database/db.js";
 
-const insertSale = async (totalPrice, name, email, phone) => {
-    const sqlSale = "INSERT INTO sale (totalPrice, name, email, phone) VALUES ( ? ? ? ?)"
+const insertSale = async (connection, totalPrice, name, email, phone) => {
+    const sqlSale = "INSERT INTO sales (total_Price, name, email, phone) VALUES ( ?, ?, ?, ?)"
     return connection.query(sqlSale, [totalPrice, name, email, phone]);
 }
 
+const insertProductSale = async (connection, arrayIds, saleId) =>{
+    const ids = arrayIds.map(productId => [productId, saleId]);
+    return connection.query('INSERT INTO product_sales (id_product, id_sale) VALUES ?', [ids]);
+};
+
 export default{
-    insertSale
+    insertSale,
+    insertProductSale
 }

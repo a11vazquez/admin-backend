@@ -15,10 +15,10 @@ const validateId = (req, res, next) => {
     next();
 }
 
-const validateCamps = (req, response, next) => {
-    const { id, name, image, price, stock, category } = req.body;
+const validateProductFields = (req, res, next) => {
+    const { name, image, price, stock, category } = req.body;
     //validacion campos requeridos.
-    if (!id || !name || !image || !price || !stock || !category) {
+    if (!name || !image || !price || !stock || !category) {
         return res.status(400).json({
             message: "campos no requeridos, no pueden ser null"
         });
@@ -26,8 +26,20 @@ const validateCamps = (req, response, next) => {
     next();
 }
 
+const validateSaleFields = (req, res, next) =>{
+    let {totalPrice, name, email, phone, idProducts} = req.body;
+     if(!totalPrice || !name || !email || !phone || 
+                    !Array.isArray(idProducts)){
+                    return res.status(400).json({
+                        message: "Datos incompletos"
+                    });
+                };
+                next();
+}
+
 export {
     sessionValidate,
     validateId,
-    validateCamps
+    validateProductFields,
+    validateSaleFields
 };

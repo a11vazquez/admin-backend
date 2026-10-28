@@ -1,28 +1,33 @@
+import pool from "../database/db.js";
 import salesModels from "../models/sales.models.js";
 
 export const insertSale = async (req, res) => {
+    const connection = await pool.getConnection();
         try {
-            let {totalPrice, name, email, phone} = req.body;
+            //obtengo la conexion 
+            await connection.beginTransaction();
 
-            if(!totalPrice || !name || !email || !phone || 
-                !Array.isArray(arrayProductsIds)){
-                return res.status(400).json({
-                    message: "Datos incompletos"
-                });
-            };
+            let {totalPrice, name, email, phone, idProducts} = req.body;
+            const [saleResult] = await salesModels.insertSale(connection, totalPrice, name, email, phone);
+            const saleId = saleResult.insertId;
 
-            const [saleResult] = await salesModels.insertSale(totalPrice, name, email, phone);
+            const [result] = await salesModels.insertProductSale(connection, idProducts, saleId);
 
-            saleResult.affectedRows ? res.status(201).json({
-                message: 'venta registrada con exito'
-            }) : res.status(400).json({
-                message: 'error al registrar la venta'
-            })
+           if(result.affectedRows){
+                await connection.commit();
+                return res.status(201).json({
+                    message: 'venta registrada con exito'
+                })
+           }else throw new Error('error al registrar la venta');
 
         } catch (error) {
-            console.log("ERROR REGISTRANDO VENTA", error);
-            res.status(201).json({
-                message : 'ERROR CAPTER! venta no registrada'
+            await connection.rollback();
+            console.log("ERROR REGISTRANDO VENTA", error.message);
+            res.status(500).json({
+                message : `${error.message}`,
+                clientMessage: 'Error! no se pudo registrar la venta'
             });
+        }finally{
+            connection.release();
         }
 }
