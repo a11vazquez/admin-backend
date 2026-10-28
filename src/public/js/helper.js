@@ -4,7 +4,7 @@ export const apiUrl = 'http://localhost:3000/'
 
 function printHtmlMessage(container, message, color) {
     console.log(message);
-    container.innerHTML = `<h1 style="display: flex; font-family: monospace; text-align: center; font-size: 5rem; color: ${color};"> ${message}</h1>`;
+    container.innerHTML = `<h1 style="display: flex; font-family: monospace; text-align: center; font-size: 3rem; color: ${color};"> ${message}</h1>`;
 }
 
 function resetInputValue(input) {

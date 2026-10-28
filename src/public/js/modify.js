@@ -76,15 +76,15 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 function printProduct(p) {
     container.innerHTML = `
-            <ul class="ul-product">
-                <li class="li-product">
+                <div class="card-product">
                     <img src="${p.img}" alt="Imagen del producto">
-                    <p>Id: ${p.id} | Name: ${p.name} | Category: ${p.category} | Price: <strong>$${p.price}</strong> | Stock : ${p.stock} </p>
-                    </li>
-                    <li>
-                        <button class="input-btn" data-id="${p.id}" data-btn-modify>Modificar Producto</button>
-                    </li>
-            </ul>
+                    <p>Id: ${p.id} </p>
+                    <p> Name: ${p.name} </p>
+                    <p> Category: ${p.category} </p>
+                    <p> Price: <strong>$${p.price}</strong></p>
+                    <p> Stock : ${p.stock} </p>
+                    <button class="input-btn" data-id="${p.id}" data-btn-modify>Modificar Producto</button>
+                </div>
             `;
 }
 
@@ -107,7 +107,7 @@ async function crearFormulario(p) {
                 <label for="stockProd">Stock</label>
                 <input type="number" name="stock" id="stockProd" class="input" value="${p.stock}" required>
 
-                <label for="imageProd">Select Category :</label>
+                <label for="imageProd">Select Category</label>
                 <select name="category" id="categoryProd">
                     <option value="auriculares">Auriculares</option>
                     <option value="iphod's">Iphod</option>

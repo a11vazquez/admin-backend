@@ -6,15 +6,15 @@ import { initSearchForm, apiUrl } from "./helper.js";
 
 function printProduct(p) {
     container.innerHTML = `
-            <ul class="ul-product">
-                <li class="li-product">
+            <div class="card-product">
                     <img src="${p.img}" alt="Imagen del producto">
-                    <p>Id: ${p.id} | Name: ${p.name} | Category: ${p.category} | Price: <strong>$${p.price}</strong> </p>
-                    </li>
-                    <li>
-                        <button class="card-btn btn-delete" data-id="${p.id}" data-btn-delete>Eliminar Producto</button>
-                    </li>
-            </ul>
+                    <p>Id: ${p.id} </p>
+                    <p> Name: ${p.name} </p>
+                    <p> Category: ${p.category} </p>
+                    <p> Price: <strong>$${p.price}</strong></p>
+                    <p> Stock : ${p.stock} </p>
+                    <button class="card-btn btn-delete" data-id="${p.id}" data-btn-delete>Eliminar Producto</button>
+                </div>
             `;
 }
 

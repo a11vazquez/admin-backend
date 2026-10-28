@@ -1,9 +1,5 @@
-
-/*Crear producto, enviando peticion a metodo POST a traves de los datos de un FORM */
-console.log("CORRIENDO JS DE CREATE");
 import { apiUrl } from "./helper.js";
 let altaProducts_container = document.getElementById("altaProducts-container");
-// const ul = document.querySelector(".ul-product");
 const container = document.querySelector(".container");
 const btn_container_close = document.querySelector(".btn-container-close");
 const textAlert = document.getElementById("textAlert");
@@ -13,7 +9,7 @@ altaProducts_container.addEventListener("submit", async (event) => {
 
     const product = Object.fromEntries(new FormData(event.target));
     console.log("Form Product : ", product)
-
+        if(textAlert.textContent.length) textAlert.textContent = "";
     try {
         let response = await fetch(`${apiUrl}api/products`, {
             method: "POST",
@@ -31,10 +27,9 @@ altaProducts_container.addEventListener("submit", async (event) => {
             printProduct(product);
             container.classList.remove("hidden");
             btn_container_close.classList.remove("hidden");
-            if(textAlert.textContent.length){
-                textAlert.textContent = "";
-                textAlert.classList.remove("error-message");
-            } 
+            textAlert.textContent = "Producto Creado Con Exito";
+            textAlert.classList.add("create-text")
+            textAlert.classList.remove("error-message");
             console.log(`${result.message} - Id Product : ${result.idProduct}`);
         } else {
             console.log("RESULT MESSAGE : ", result.message);
