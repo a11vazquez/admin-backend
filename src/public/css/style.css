@@ -370,22 +370,6 @@ ion-icon{
 
 @media (max-width: 840px) {
 
-    /*=====================
-    HEADER AND HAMBURGUER MENU
-    ======================*/
-
-    /*navbar y, carrito*/
-    /* .header-info {
-      
-        flex-direction: row-reverse;
-        gap: 0.5rem;
-        align-items: flex-start;
-        padding-right: 0.3rem;
-    }
-
-    .cart-icon{
-        margin: 0;
-    } */
 
     .ham-btn,
     .ham-close {
@@ -536,6 +520,7 @@ ion-icon{
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    margin: 1rem;
     padding: 1.4rem;
     box-shadow: rgba(99, 99, 99, 0.8) 0px 2px 8px 0px;
     border-radius: 0.8rem;
@@ -652,9 +637,12 @@ ion-icon{
 
 
 @media (max-width: 650rem) {
-
-
-
+.section-search-product{
+    flex-direction: column;
+}
+.input-search-product{
+    width: 92%;
+}
     .map {
         width: 100%;
         height: 350px;
@@ -720,6 +708,7 @@ ion-icon{
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 1rem;
 }
 
 
@@ -779,7 +768,7 @@ INPUT SEARCH PRODUCT
 .input-search-product{
     padding: 0.5rem 1.5rem;
     border-radius: 1.5rem;
-    width: clamp(14rem, 22rem, 26rem);
+    width: clamp(92%, 22rem, 26rem);
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     border: none; 
     outline: none; /*elimina borde interno al hacer foco*/

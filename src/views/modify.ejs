@@ -9,31 +9,33 @@
 </form>
 
 <section class="container">
-<% if (product) { %>
+    <% if (product) { %>
         <form id="altaProducts-container" class="classic-form">
-               
-                <input type="hidden" name="id" class="input" value="<%= product.id %>">
-                <label for="nameProd">Name</label>
-                <input type="text" name="name" id="nameProd" class="input" value="<%= product.name %>" required>
 
-                <label for="imageProd">Image</label>
-                <input type="text" name="image" id="imageProd" class="input" value="<%= product.img %>" required>
+            <input type="hidden" name="id" class="input" value="<%= product.id %>">
+            <label for="nameProd">Name</label>
+            <input type="text" name="name" id="nameProd" class="input" value="<%= product.name %>" required>
 
-                <label for="priceProd">Price</label>
-                <input type="number" name="price" id="priceProd" class="input" value="<%= product.price %>" required>
-                
-                <label for="stockProd">Stock</label>
-                <input type="number" name="stock" id="stockProd" class="input" value="<%= product.stock %>" required>
+            <label for="imageProd">Image</label>
+            <input type="text" name="image" id="imageProd" class="input" value="<%= product.img %>" required>
 
-                <label for="imageProd">Select Category :</label>
-                <select name="category" id="categoryProd">
-                    <option value="auriculares">Auriculares</option>
-                    <option value="iphod's">Iphod</option>
-                </select>
+            <label for="priceProd">Price</label>
+            <input type="number" name="price" id="priceProd" class="input" value="<%= product.price %>" required>
 
-                <input type="submit" class="input-btn" value="Actualizar Producto">
-            </form>
-<% }  %>
+            <label for="stockProd">Stock</label>
+            <input type="number" name="stock" id="stockProd" class="input" value="<%= product.stock %>" required>
+
+            <label for="imageProd">Select Category :</label>
+            <select name="category" id="categoryProd">
+                <option value="airpods">AirPods</option>
+                <option value="iphone">Iphone</option>
+                <option value="ipad">Ipad</option>
+                <option value="mac">Mac</option>
+            </select>
+
+            <input type="submit" class="input-btn" value="Actualizar Producto">
+        </form>
+        <% } %>
 </section>
 
 <script type="module" src="/js/modify.js"></script>

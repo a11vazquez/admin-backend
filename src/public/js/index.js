@@ -25,7 +25,10 @@ const searchProductInput = document.getElementById("filter-input");
 searchProductInput.addEventListener("keyup", filterProductInput); // Evento al terminar de presionar una tecla.
 
 function filterProductInput() {
+
+        removeUnderline();
     if (searchProductInput.value.length) {
+
         let filteredProducts = products.filter(p => p.name.toLowerCase().includes(searchProductInput.value));
         filteredProducts.length ? printProducts(filteredProducts) : container.innerHTML = `<p>PRODUCT NOT FOUND</p>`;
     } else
@@ -35,6 +38,7 @@ function filterProductInput() {
 
   //selecciono todas las categorias nodeList de divs con la clase .category-products_card
         const categories = document.querySelectorAll(".category-products_card");
+        const categoryProducts = document.querySelectorAll(".category-products");
 
         /*BTNS ORDENAR PRODUCTOS */
     const sortByPrice = document.getElementById("sort-price-btn");
@@ -93,9 +97,59 @@ printProducts(products);
                 category.classList.add("underline"); //add underline select categorie
             };
         
+            function removeUnderline(){
+                categories.forEach( c => {
+                  if(c.classList.contains("underline")){
+                    c.classList.remove("underline")
+                  }
+                })
+            }
+function configureCategories() {
+    categories.forEach(category => {
+        category.addEventListener("click", () => {
+            if (category.classList.contains("underline")) {
+                console.log("desde el if contains:", category.dataset.category)
+                return; //si ya esta seleccionada, termina el evento
+            }
 
+            addUnderline(category);
+            redenderCategoryProducts(category.dataset.category);
+        });
+    });                 
+}
+function redenderCategoryProducts(category) {
+    if(category != "all"){
 
+        let card = '';
+        products.forEach(p => {
+            if(p.category == category){
+                card += `
+                     <div class="card-product">
+        <div class="card-product_img">
+            <img src="${p.img}" alt="${p.name}"> 
+        </div>
+            <p>ID : ${p.id}</p>
+                    <h3>${p.name}</h3> 
+                    <p>Category: ${p.category}</p>
+                    <p>Price: $${p.price}</p>
+                    <p>Stock: ${p.stock}</p>
+                    <div class="card-buttons">
+                        <button class="card-btn btn-modify" data-id="${p.id}" data-btn-modify>Modificar</button>
+                        <button class="card-btn btn-delete" data-id="${p.id}" data-btn-delete>Eliminar</button>
+                    </div>
+                </div>
+                `
+            }
+        });
+    
+        console.log("cards category : ", card)
+        container.innerHTML = card;
+    }else 
+        printProducts(products);
 
+        
+    console.log("category  rendercategory :", category);
+}
 
 function printProducts(array) {
     cards = "";

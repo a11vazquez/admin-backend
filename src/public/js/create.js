@@ -93,7 +93,7 @@ function printProduct(p) {
             <h3>Name : ${p.name}</h3> 
             <p>Category : ${p.category} </p>
             <p>Price : <strong>$${p.price}</strong></p>
-            <p>Stock : 11</p>
+            <p>Stock : ${p.stock}</p>
         </div>` );
 }
 
