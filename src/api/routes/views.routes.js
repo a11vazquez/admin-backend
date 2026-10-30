@@ -7,28 +7,28 @@ import { sessionValidate } from "../middlewares/middlewares.js";
 
 const router = Router();
 
-router.get("/panel", viewProducts);
+router.get("/panel", sessionValidate, viewProducts);
 
-router.get("/search", async (req, res) => {
+router.get("/search", sessionValidate, async (req, res) => {
         res.render("search", {
                 title: "Buscar Por ID"
         });
 });
-router.get("/create", async (req, res) => {
+router.get("/create", sessionValidate, async (req, res) => {
         res.render("create", {
                 title: "Crear Producto",
                 about: "Producto",
         });
 });
 
-router.get("/modify", async (req, res) => {
+router.get("/modify", sessionValidate, async (req, res) => {
         res.render("modify", {
                 title: "Modificar Producto",
                 product: null
         });
 });
 
-router.get("/modify/:id", async (req, res) => {
+router.get("/modify/:id", sessionValidate, async (req, res) => {
         const product = await productModels.selectProductWhereId(req.params.id);
         if (product) {
                 res.render("modify", {
@@ -38,14 +38,14 @@ router.get("/modify/:id", async (req, res) => {
         }
 });
 
-router.get("/delete", async (req, res) => {
+router.get("/delete", sessionValidate, async (req, res) => {
         res.render("delete", {
                 title: "Eliminar Producto",
                 product: null
         });
 });
 
-router.get("/delete/:id", async (req, res) => {
+router.get("/delete/:id", sessionValidate, async (req, res) => {
         const product = await productModels.selectProductWhereId(req.params.id);
         if (product) {
                 res.render("delete", {
