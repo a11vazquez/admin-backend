@@ -631,13 +631,47 @@ Content-Type: application/json
 
 ---
 
+# Screenshots
+
+Capturas de pantalla del panel administrativo desarrollado con EJS.
+
+## Login
+
+![Login](docs/screenshots/login.jpg)
+
+## Panel
+
+![Dashboard](docs/screenshots/panel.jpg)
+
+## Gestión de productos
+
+![Productos](docs/screenshots/panel-products.jpg)
+
+## Crear producto
+
+![Crear producto](docs/screenshots/create-exito.jpg)
+
+![Producto Creado](docs/screenshots/create-exito1.jpg)
+
+## Modificar producto
+
+![Modificar producto](docs/screenshots/modify.jpg)
+
+## Eliminar producto
+
+![Eliminar producto](docs/screenshots/delete.jpg)
+
+---
+
 ## Project Structure
 La aplicación utiliza una arquitectura ***MVC*** Modelo-Vista-Controlador, separando las responsabilidades de cada componente para facilitar el mantenimiento y la escalabilidad del proyecto.
 
 ```
 admin-backend/ -> Es la raiz de nuestro proyecto
 |
-│
+├── docs/
+|   ├── screenshots -> imagenes de muestra del proyecto
+|   
 ├── src/ -> Source: Contiene la logica principal de la aplicacion
 │   ├── api/ -> Logica de nuestra API REST
 |   |   ├── config/ -> Archivo para obtener y exportar la info de las variables de entorno .env
