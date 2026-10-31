@@ -229,11 +229,9 @@ DELETE /api/products/1
 
 **Respuesta: `200 Ok`**
 ```json
-[
     {
         "result": true
     }
-]
 ```
 
 ***Posibles respuestas:***
@@ -577,12 +575,10 @@ POST /api/users
 
 **Respuesta: `201 Created`**
 ```json
-[
     {
       message: "usuario creado con exito",
       userID: rows.insertId
     }
-]
 ```
 
 ***Posibles respuestas:***
@@ -624,11 +620,9 @@ Content-Type: application/json
 
 **Respuesta: `201 Created`**
 ```json
-[
     {
       message: "Venta registrada con exito",
     }
-]
 ```
 
 ***Posibles respuestas:***
