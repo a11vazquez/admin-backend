@@ -7,8 +7,6 @@ El proyecto también cuenta con un panel administrativo desarrollado con EJS, qu
 
 ## Tecnologías utilizadas
 
-El proyecto está desarrollado utilizando las siguientes tecnologías y herramientas:
-
 | Tecnología | Descripción |
 |---|---|
 | [Node.js](https://nodejs.org/) | Entorno de ejecución de JavaScript del lado del servidor. |
