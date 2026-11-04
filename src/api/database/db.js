@@ -12,7 +12,7 @@ const { database } = environments;
 
 const pool = mysql.createPool({
     host: database.host,
-    port: Number(database.port),
+    port: database.port,
     database: database.name,
     user: database.user,
     password: database.password,

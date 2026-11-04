@@ -69,30 +69,39 @@ app.use("/api/users", userRoutes);
 app.use("/api/sales", saleRoutes);
 /* ========================== */
 app.get("/api/test-db", async (req, res) => {
+    const start = Date.now();
+
     try {
-        const [rows] = await db.query(`
-            SELECT 
-                1 AS connection,
-                DATABASE() AS database_name
-        `);
+        console.log("Intentando conectar con Aiven...");
+
+        const connection = await db.getConnection();
+
+        console.log("Conexión establecida en:", Date.now() - start, "ms");
+
+        const [rows] = await connection.query(
+            "SELECT 1 AS connection, DATABASE() AS database_name"
+        );
+
+        connection.release();
 
         res.json({
             success: true,
-            message: "Conexión con Aiven correcta",
+            elapsed: Date.now() - start,
             data: rows[0]
         });
 
     } catch (error) {
-        console.error("ERROR DE CONEXIÓN AIVEN:", {
+        console.error("ERROR AIVEN:", {
             code: error.code,
             errno: error.errno,
-            sqlState: error.sqlState,
-            message: error.message
+            message: error.message,
+            elapsed: Date.now() - start
         });
 
         res.status(500).json({
             success: false,
-            error: error.code || "UNKNOWN_ERROR"
+            error: error.code,
+            elapsed: Date.now() - start
         });
     }
 });
