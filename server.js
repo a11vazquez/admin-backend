@@ -9,7 +9,7 @@ import expressEjsLayouts from "express-ejs-layouts";
 import morgan from "morgan";
 import { productRoutes, saleRoutes, userRoutes, viewsRoutes} from "./src/api/routes/index.js";
 import { _dirname, join } from "./src/api/utils/index.js";
-
+import db from "./src/api/database/db.js";
 
 
 /*============================== */
@@ -68,7 +68,34 @@ app.use("/api/users", userRoutes);
 
 app.use("/api/sales", saleRoutes);
 /* ========================== */
+app.get("/api/test-db", async (req, res) => {
+    try {
+        const [rows] = await db.query(`
+            SELECT 
+                1 AS connection,
+                DATABASE() AS database_name
+        `);
 
+        res.json({
+            success: true,
+            message: "Conexión con Aiven correcta",
+            data: rows[0]
+        });
+
+    } catch (error) {
+        console.error("ERROR DE CONEXIÓN AIVEN:", {
+            code: error.code,
+            errno: error.errno,
+            sqlState: error.sqlState,
+            message: error.message
+        });
+
+        res.status(500).json({
+            success: false,
+            error: error.code || "UNKNOWN_ERROR"
+        });
+    }
+});
 // En local inicia el servidor normalmente.
 // En Vercel no ejecuta app.listen().
 if (!process.env.VERCEL) {
