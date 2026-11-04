@@ -69,8 +69,12 @@ app.use("/api/users", userRoutes);
 app.use("/api/sales", saleRoutes);
 /* ========================== */
 
+// En local inicia el servidor normalmente.
+// En Vercel no ejecuta app.listen().
+if (!process.env.VERCEL) {
+    app.listen(PORT || 3000, () => {
+        console.log(`Server running in port: ${PORT || 3000}`);
+    });
+}
 
-
-app.listen(PORT,() =>{
-    console.log(`Server running in port: ${PORT}`);
-});
+export default app;

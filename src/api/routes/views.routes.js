@@ -2,7 +2,7 @@ import { viewProducts } from "../controllers/views.controller.js";
 import { Router } from "express";
 import productModels from "../models/product.models.js";
 import userModels from "../models/user.models.js";
-import { hashPassword, comparePassword } from "../utils/bycript.js";
+import { comparePassword } from "../utils/bycript.js";
 import { sessionValidate } from "../middlewares/middlewares.js";
 
 const router = Router();
