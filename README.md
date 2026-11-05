@@ -5,6 +5,17 @@ API REST desarrollada con **Node.js**, **Express** y **MySQL**, orientada a la g
 El proyecto también cuenta con un panel administrativo desarrollado con EJS, que permite gestionar los productos mediante una interfaz web.
 ---
 
+**Repositorio Frontend:** [Two Click - Apple Store](https://github.com/a11vazquez/twoclickstore)
+
+**Live View On:** [Two Click Store](https://avtwoclickstore.vercel.app/)
+- https://avtwoclickstore.vercel.app/
+
+---
+
+**API REST:** [Two Click API](https://two-click-panel-admin.vercel.app)
+- https://two-click-panel-admin.vercel.app/api/products
+
+---
 ## Tecnologías utilizadas
 
 | Tecnología | Descripción |
