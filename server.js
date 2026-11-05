@@ -68,6 +68,52 @@ app.use("/api/users", userRoutes);
 
 app.use("/api/sales", saleRoutes);
 /* ========================== */
+
+import net from "node:net";
+app.get("/api/test-tcp", (req, res) => {
+    const start = Date.now();
+
+    const socket = net.createConnection({
+        host: environments.database.host,
+        port: Number(environments.database.port)
+    });
+
+    socket.setTimeout(8000);
+
+    socket.on("connect", () => {
+        const elapsed = Date.now() - start;
+
+        console.log("TCP CONNECTION SUCCESS:", elapsed);
+
+        socket.destroy();
+
+        res.json({
+            success: true,
+            elapsed,
+            message: "TCP connection established"
+        });
+    });
+
+    socket.on("timeout", () => {
+        socket.destroy();
+
+        res.status(500).json({
+            success: false,
+            error: "TCP_TIMEOUT",
+            elapsed: Date.now() - start
+        });
+    });
+
+    socket.on("error", (error) => {
+        res.status(500).json({
+            success: false,
+            error: error.code,
+            message: error.message,
+            elapsed: Date.now() - start
+        });
+    });
+});
+
 app.get("/api/test-db", async (req, res) => {
     const start = Date.now();
 
@@ -91,18 +137,18 @@ app.get("/api/test-db", async (req, res) => {
         });
 
     } catch (error) {
-        console.error("ERROR AIVEN:", {
-            code: error.code,
-            errno: error.errno,
-            message: error.message,
-            elapsed: Date.now() - start
-        });
+       console.error("ERROR AIVEN:", {
+        code: error.code,
+        message: error.message,
+        sqlMessage: error.sqlMessage,
+        stack: error.stack
+    });
 
-        res.status(500).json({
-            success: false,
-            error: error.code,
-            elapsed: Date.now() - start
-        });
+    res.status(500).json({
+        success: false,
+        error: error.code,
+        message: error.message
+    });
     }
 });
 // En local inicia el servidor normalmente.
